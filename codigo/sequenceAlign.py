@@ -41,6 +41,7 @@ def print_aln_details(aln):
 
 
 # Función para imprimir todos los alineamientos
+# Imprime todos los detalles de cada alineamiento, incluyendo los pasos, puntuación y las secuencias alineadas
 def print_all(ALIGNMENTS):
     print('Total de alineamientos: ' + str(len(ALIGNMENTS)))
     print('Puntuación general: ' + str(ALIGNMENTS[0][3][0][1]) + '\n')
@@ -49,6 +50,7 @@ def print_all(ALIGNMENTS):
     return
 
 # Función para imprimir solo los alineamientos
+# Imprime solo las secuencias alineadas de cada alineamiento, sin detallar pasos o puntuación.
 def print_alns_only(ALIGNMENTS):
     print('Total de alineamientos: ' + str(len(ALIGNMENTS)))
     print('Puntuación general: ' + str(ALIGNMENTS[0][3][0][1]) + '\n')

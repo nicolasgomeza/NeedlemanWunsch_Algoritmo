@@ -1,5 +1,7 @@
 # Proyecto Algoritmo Needleman-Wunsch 🧬
 
+Este repositorio hace parte de un artículo sobre alineamiento de cadenas genéticas escritor por el autor de este repositorio. El documento está includo dentro de la carpeta 'docs' en formato pdf para su descarga.
+
 ## Resumen 📚
 
 Este proyecto se enfoca en la simplificación del algoritmo de alineamiento de secuencias de ADN utilizando conceptos de álgebra lineal. Exploraremos cómo las matrices pueden ser una poderosa herramienta para encontrar similitudes entre secuencias de ADN. Además, proporcionaremos un ejemplo de alineamiento de secuencias en Python y lo demostraremos en clase. Esto permitirá una comprensión más profunda de cómo se aplican las herramientas matemáticas en el campo de la genética y la bioinformática.

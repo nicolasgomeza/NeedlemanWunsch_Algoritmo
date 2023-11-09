@@ -96,29 +96,41 @@ def find_each_path(c_i, c_j, path=''):
     return len(ALN_PATHWAYS)
 
 # Evaluación de la matriz [inicio]
+# Esta parte establece la puntuación para alinear una base nitrogenada con un espacio en blanco, 
+# representado una brecha como se vio graficamente.
 for i in range(MATRIX_ROW_N):
     MATRIX[i][0] = [GAP_SCORE * i, []]
 for j in range(MATRIX_COLUMN_N):
     MATRIX[0][j] = [GAP_SCORE * j, []]
+
+# En esta parte calculamos la mejor alineación para 3 direcciones posibles
+# Así como se definió en el documento
 for i in range(1, MATRIX_ROW_N):
     for j in range(1, MATRIX_COLUMN_N):
         score = MATCH_SCORE if (SEQUENCE_1[i - 1] == SEQUENCE_2[j - 1]) else MISMATCH_SCORE
+        # Similar a nuestra definición en el documento
         h_val = MATRIX[i][j - 1][0] + GAP_SCORE
         d_val = MATRIX[i - 1][j - 1][0] + score
         v_val = MATRIX[i - 1][j][0] + GAP_SCORE
         o_val = [h_val, d_val, v_val]
+        # Creando una matriz con la combinación que maximiza la puntuación
         MATRIX[i][j] = [max(o_val), [i + 1 for i, v in enumerate(o_val) if v == max(o_val)]]  # h = 1, d = 2, v = 3
-# Evaluación de la matriz [fin]
 
+
+# Almacenamos la puntuación total 
 OVERALL_SCORE = MATRIX[i][j][0]
 score = OVERALL_SCORE
 l_i = i
 l_j = j
 ALIGNMENTS = []
+
+# Se llama la función para descubrir los caminos de alineamiento posibles a partir de la última posición de la matriz.
 tot_aln = find_each_path(i, j)
 aln_count = 0
 
-# Compilación de alineamientos basada en los caminos descubiertos en la matriz
+# Esta parte genera alineamientos basados en los caminos descubiertos en la matriz, 
+# siguiendo las direcciones específicas de cada camino
+#  y ajustando las secuencias alineadas en  consecuencia.
 for elem in ALN_PATHWAYS:
     i = l_i - 1
     j = l_j - 1
